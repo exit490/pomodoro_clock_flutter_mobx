@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/MainPage.dart';
+import 'package:pomodoro_clock_flutter_mobx/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
