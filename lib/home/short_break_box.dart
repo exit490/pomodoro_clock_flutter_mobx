@@ -8,7 +8,7 @@ class BreakBox extends StatelessWidget {
     return Column(
       children: <Widget>[
         _plusButton(),
-        Text('BREAK'),
+        Text('SHORT BREAK'),
         _sessionTextField(),
         _subtractButton(),
       ],

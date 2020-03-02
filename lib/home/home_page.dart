@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/action_buttons.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/break_box.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/clock_core_view.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/long_break_box.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/session_box.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/short_break_box.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,8 +18,10 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        LongBreakBox(),
+        Padding(padding: EdgeInsets.only(right: 20)),
         SessionBox(),
-        Padding(padding: EdgeInsets.only(right: 10)),
+        Padding(padding: EdgeInsets.only(right: 20)),
         BreakBox(),
       ],
     );
