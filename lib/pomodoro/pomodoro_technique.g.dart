@@ -9,6 +9,23 @@ part of 'pomodoro_technique.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Pomodoro on _Pomodoro, Store {
+  final _$longBreakAtom = Atom(name: '_Pomodoro.longBreak');
+
+  @override
+  double get longBreak {
+    _$longBreakAtom.context.enforceReadPolicy(_$longBreakAtom);
+    _$longBreakAtom.reportObserved();
+    return super.longBreak;
+  }
+
+  @override
+  set longBreak(double value) {
+    _$longBreakAtom.context.conditionallyRunInAction(() {
+      super.longBreak = value;
+      _$longBreakAtom.reportChanged();
+    }, _$longBreakAtom, name: '${_$longBreakAtom.name}_set');
+  }
+
   final _$sessionAtom = Atom(name: '_Pomodoro.session');
 
   @override
@@ -26,21 +43,21 @@ mixin _$Pomodoro on _Pomodoro, Store {
     }, _$sessionAtom, name: '${_$sessionAtom.name}_set');
   }
 
-  final _$breakValueAtom = Atom(name: '_Pomodoro.breakValue');
+  final _$shortBreakAtom = Atom(name: '_Pomodoro.shortBreak');
 
   @override
-  double get breakValue {
-    _$breakValueAtom.context.enforceReadPolicy(_$breakValueAtom);
-    _$breakValueAtom.reportObserved();
-    return super.breakValue;
+  double get shortBreak {
+    _$shortBreakAtom.context.enforceReadPolicy(_$shortBreakAtom);
+    _$shortBreakAtom.reportObserved();
+    return super.shortBreak;
   }
 
   @override
-  set breakValue(double value) {
-    _$breakValueAtom.context.conditionallyRunInAction(() {
-      super.breakValue = value;
-      _$breakValueAtom.reportChanged();
-    }, _$breakValueAtom, name: '${_$breakValueAtom.name}_set');
+  set shortBreak(double value) {
+    _$shortBreakAtom.context.conditionallyRunInAction(() {
+      super.shortBreak = value;
+      _$shortBreakAtom.reportChanged();
+    }, _$shortBreakAtom, name: '${_$shortBreakAtom.name}_set');
   }
 
   final _$statusAtom = Atom(name: '_Pomodoro.status');
@@ -95,7 +112,7 @@ mixin _$Pomodoro on _Pomodoro, Store {
   @override
   String toString() {
     final string =
-        'session: ${session.toString()},breakValue: ${breakValue.toString()},status: ${status.toString()}';
+        'longBreak: ${longBreak.toString()},session: ${session.toString()},shortBreak: ${shortBreak.toString()},status: ${status.toString()}';
     return '{$string}';
   }
 }

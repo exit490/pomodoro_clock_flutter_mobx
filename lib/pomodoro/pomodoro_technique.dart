@@ -7,10 +7,13 @@ class Pomodoro = _Pomodoro with _$Pomodoro;
 
 abstract class _Pomodoro with Store {
   @observable
+  double longBreak = 30;
+
+  @observable
   double session = 25;
 
   @observable
-  double breakValue = 5;
+  double shortBreak = 5;
 
   @observable
   PomodoroStatus status = PomodoroStatus.initial;
@@ -28,7 +31,8 @@ abstract class _Pomodoro with Store {
   @action
   void reset() {
     status = PomodoroStatus.initial;
+    longBreak = 30;
     session = 25;
-    breakValue = 5;
+    shortBreak = 5;
   }
 }
