@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,39 +11,93 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          _ClockCoreView(),
+          _ActionsButtons(),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+    );
+  }
+}
+
+class _ClockCoreView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        _statusText(),
+        _timeText(),
+      ],
+    );
+  }
+
+  _statusText() {
+    return Text('Ready?');
+  }
+
+  _timeText() {
+    return Text('5:00');
+  }
+}
+
+class _ActionsButtons extends StatelessWidget {
+  final double buttonSize = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _startButton(),
+        _pauseButton(),
+        _resetButton(),
+      ],
+    );
+  }
+
+  _startButton() {
+    var playIcon = Icon(
+      Icons.play_arrow,
+      size: buttonSize,
+    );
+
+    return FlatButton.icon(
+      onPressed: () {},
+      icon: playIcon,
+      label: Text('START'),
+    );
+  }
+
+  _pauseButton() {
+    var pauseIcon = Icon(
+      Icons.pause,
+      size: buttonSize,
+    );
+
+    return FlatButton.icon(
+      onPressed: () {},
+      icon: pauseIcon,
+      label: Text('PAUSE'),
+    );
+  }
+
+  _resetButton() {
+    var refreshIcon = Icon(
+      Icons.refresh,
+      size: buttonSize,
+    );
+
+    return FlatButton.icon(
+      onPressed: () {},
+      icon: refreshIcon,
+      label: Text('RESET'),
     );
   }
 }
