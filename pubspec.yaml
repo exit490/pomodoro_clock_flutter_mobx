@@ -19,7 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_mobx : ^1.0.1
+  flutter_mobx: ^1.0.1
+  countdown: 0.1.0
 
 
 

@@ -12,14 +12,14 @@ mixin _$Pomodoro on _Pomodoro, Store {
   final _$longBreakAtom = Atom(name: '_Pomodoro.longBreak');
 
   @override
-  double get longBreak {
+  int get longBreak {
     _$longBreakAtom.context.enforceReadPolicy(_$longBreakAtom);
     _$longBreakAtom.reportObserved();
     return super.longBreak;
   }
 
   @override
-  set longBreak(double value) {
+  set longBreak(int value) {
     _$longBreakAtom.context.conditionallyRunInAction(() {
       super.longBreak = value;
       _$longBreakAtom.reportChanged();
@@ -29,14 +29,14 @@ mixin _$Pomodoro on _Pomodoro, Store {
   final _$sessionAtom = Atom(name: '_Pomodoro.session');
 
   @override
-  double get session {
+  int get session {
     _$sessionAtom.context.enforceReadPolicy(_$sessionAtom);
     _$sessionAtom.reportObserved();
     return super.session;
   }
 
   @override
-  set session(double value) {
+  set session(int value) {
     _$sessionAtom.context.conditionallyRunInAction(() {
       super.session = value;
       _$sessionAtom.reportChanged();
@@ -46,14 +46,14 @@ mixin _$Pomodoro on _Pomodoro, Store {
   final _$shortBreakAtom = Atom(name: '_Pomodoro.shortBreak');
 
   @override
-  double get shortBreak {
+  int get shortBreak {
     _$shortBreakAtom.context.enforceReadPolicy(_$shortBreakAtom);
     _$shortBreakAtom.reportObserved();
     return super.shortBreak;
   }
 
   @override
-  set shortBreak(double value) {
+  set shortBreak(int value) {
     _$shortBreakAtom.context.conditionallyRunInAction(() {
       super.shortBreak = value;
       _$shortBreakAtom.reportChanged();
