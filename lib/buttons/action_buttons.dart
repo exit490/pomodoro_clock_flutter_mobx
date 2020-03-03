@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pomodoro_clock_flutter_mobx/buttons/pause_button.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/start_button.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 
@@ -14,22 +15,9 @@ class ActionsButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         StartButton(),
-        _pauseButton(),
+        PauseButton(),
         _resetButton(),
       ],
-    );
-  }
-
-  _pauseButton() {
-    var pauseIcon = Icon(
-      Icons.pause,
-      size: size,
-    );
-
-    return FlatButton.icon(
-      onPressed: () {},
-      icon: pauseIcon,
-      label: Text('PAUSE'),
     );
   }
 
