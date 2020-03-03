@@ -16,6 +16,8 @@ abstract class _PomodoroCountDown with Store {
   set duration(Duration duration) => _duration = duration;
   Duration _duration;
 
+  _isRunning() => _countDownSubscription != null;
+
   @observable
   int countDownSeconds;
 
@@ -44,9 +46,14 @@ abstract class _PomodoroCountDown with Store {
     _countDownSubscription?.cancel();
     _countDownSubscription = null;
     _duration = null;
+    countDownSeconds = null;
   }
 
   _configureCountDownSubscription() {
+    if (_isRunning()) {
+      return;
+    }
+
     _duration ??= _defaultDuration;
     final _countDown = CountDown(_duration);
 
