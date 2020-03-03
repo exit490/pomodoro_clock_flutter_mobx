@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/countdown/pomodoro_countdown.dart';
 
 class ActionsButtons extends StatelessWidget {
   final double buttonSize = 20;
-  final pomodoroCountDown = PomodoroCountDown( );
+  final pomodoroCountDown = GetIt.I<PomodoroCountDown>();
 
   @override
   Widget build(BuildContext context) {
