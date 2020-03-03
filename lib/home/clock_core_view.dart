@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/countdown/pomodoro_countdown.dart';
 
 class StatusAndClockView extends StatelessWidget {
-  final _pomodoroCountDown = PomodoroCountDown();
+  final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
 
   @override
   Widget build(BuildContext context) => Column(
         children: <Widget>[
           _statusText,
-          Observer(
-              builder: (_) => Text('${_pomodoroCountDown.count}',
-                  style: const TextStyle(fontSize: 90))),
+          _countDownText(),
         ],
       );
 
@@ -19,4 +18,11 @@ class StatusAndClockView extends StatelessWidget {
     'Ready?',
     style: TextStyle(color: Colors.grey[800], fontSize: 35),
   );
+
+  _countDownText() => Observer(
+        builder: (_) => Text(
+          '${_pomodoroCountDown.count}',
+          style: TextStyle(fontSize: 90),
+        ),
+      );
 }

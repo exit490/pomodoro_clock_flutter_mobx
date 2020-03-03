@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/action_buttons.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/clock_core_view.dart';
@@ -27,13 +26,6 @@ class HomePage extends StatelessWidget {
             ]),
       );
 
-  _countDownText() => Observer(
-        builder: (_) => Text(
-          '${pomodoroCountDown.count}',
-          style: TextStyle(fontSize: 90),
-        ),
-      );
-
   sessionBreakRow() => Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,6 +35,5 @@ class HomePage extends StatelessWidget {
             SessionBox(),
             Padding(padding: EdgeInsets.only(right: 20)),
             BreakBox(),
-            _countDownText(),
           ]);
 }
