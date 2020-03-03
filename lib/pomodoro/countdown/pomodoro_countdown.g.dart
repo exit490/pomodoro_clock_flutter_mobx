@@ -58,10 +58,4 @@ mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
       _$_PomodoroCountDownActionController.endAction(_$actionInfo);
     }
   }
-
-  @override
-  String toString() {
-    final string = 'count: ${count.toString()}';
-    return '{$string}';
-  }
 }

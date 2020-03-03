@@ -108,11 +108,4 @@ mixin _$Pomodoro on _Pomodoro, Store {
       _$_PomodoroActionController.endAction(_$actionInfo);
     }
   }
-
-  @override
-  String toString() {
-    final string =
-        'longBreak: ${longBreak.toString()},session: ${session.toString()},shortBreak: ${shortBreak.toString()},status: ${status.toString()}';
-    return '{$string}';
-  }
 }
