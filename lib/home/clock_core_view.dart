@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class StatusAndClockView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _statusText(),
-        _timeText(),
-      ],
+    return Observer(
+      builder: (_) => Column(children: <Widget>[
+        _statusText,
+        _timeText,
+      ]),
     );
   }
 
-  _statusText() {
-    return Text(
-      'Ready?',
-      style: TextStyle(
-        color: Colors.grey[800],
-        fontSize: 35,
-      ),
-    );
-  }
+  final _statusText = Text(
+    'Ready?',
+    style: TextStyle(color: Colors.grey[800], fontSize: 35),
+  );
 
-  _timeText() {
-    return Text(
-      '5:00',
-      style: TextStyle(
-        color: Colors.grey[800],
-        fontWeight: FontWeight.bold,
-        fontSize: 40,
-      ),
-    );
-  }
+  final _timeText = Text('12', style: const TextStyle(fontSize: 90));
 }

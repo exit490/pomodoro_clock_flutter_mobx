@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/countdown/pomodoro_countdown.dart';
 
 class ActionsButtons extends StatelessWidget {
   final double buttonSize = 20;
+  final pomodoroCountDown = PomodoroCountDown( );
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class ActionsButtons extends StatelessWidget {
     );
 
     return FlatButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        pomodoroCountDown.start();
+      },
       icon: playIcon,
       label: Text('START'),
     );
@@ -48,7 +52,7 @@ class ActionsButtons extends StatelessWidget {
     );
 
     return FlatButton.icon(
-      onPressed: () {},
+      onPressed: pomodoroCountDown.pause,
       icon: refreshIcon,
       label: Text('RESET'),
     );
