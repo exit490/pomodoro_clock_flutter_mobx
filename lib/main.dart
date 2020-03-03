@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/home_page.dart';
-import 'package:pomodoro_clock_flutter_mobx/pomodoro/countdown/pomodoro_countdown.dart';
 
 void main() {
   GetIt.I.registerSingleton<PomodoroCountDown>(PomodoroCountDown());
