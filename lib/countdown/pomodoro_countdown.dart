@@ -75,7 +75,9 @@ abstract class _PomodoroCountDown with Store {
         countDownSeconds = duration.inSeconds;
       }
     });
-    _countDownSubscription
-        .onDone(() => _pomodoroTechnique.updatePomodoroStatus());
+    _countDownSubscription.onDone(() {
+      _killCountDownSubscription();
+      _pomodoroTechnique.updatePomodoroStatus();
+    });
   }
 }

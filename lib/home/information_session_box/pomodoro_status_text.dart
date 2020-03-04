@@ -26,7 +26,7 @@ class PomodoroStatusText extends StatelessWidget {
     }
 
     if (status == PomodoroStatus.long_break) {
-      return Text(' ', style: style);
+      return Text('Long Break', style: style);
     }
     return Text(' ', style: style);
   }
