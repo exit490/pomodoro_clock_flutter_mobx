@@ -25,8 +25,8 @@ class PomodoroStatusText extends StatelessWidget {
     }
 
     if (status == PomodoroStatus.started) {
-      return Text('');
+      return Text(' ', style: style);
     }
-    return Text('');
+    return Text(' ', style: style);
   }
 }
