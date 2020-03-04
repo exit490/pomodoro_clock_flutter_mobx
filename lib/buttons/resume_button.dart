@@ -7,15 +7,15 @@ import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 class ResumeButton extends StatelessWidget {
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
 
-  final resumeIcon = Icon(
-    Icons.play_circle_outline,
+  final playIcon = Icon(
+    Icons.play_arrow,
     size: ActionsButtons.size,
   );
 
   @override
   Widget build(BuildContext context) => FlatButton.icon(
         onPressed: _pomodoroTechnique.resume,
-        icon: resumeIcon,
+        icon: playIcon,
         label: Text('RESUME'),
       );
 }
