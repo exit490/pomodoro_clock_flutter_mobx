@@ -14,7 +14,7 @@ class ResumeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FlatButton.icon(
-        onPressed: _pomodoroTechnique.start,
+        onPressed: _pomodoroTechnique.resume,
         icon: resumeIcon,
         label: Text('RESUME'),
       );
