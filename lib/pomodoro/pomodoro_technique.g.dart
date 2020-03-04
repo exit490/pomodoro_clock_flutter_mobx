@@ -30,40 +30,10 @@ mixin _$PomodoroTechnique on _PomodoroTechnique, Store {
       ActionController(name: '_PomodoroTechnique');
 
   @override
-  void start() {
+  void updatePomodoroStatus() {
     final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
-      return super.start();
-    } finally {
-      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void pause() {
-    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
-    try {
-      return super.pause();
-    } finally {
-      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resume() {
-    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
-    try {
-      return super.resume();
-    } finally {
-      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void reset() {
-    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
-    try {
-      return super.reset();
+      return super.updatePomodoroStatus();
     } finally {
       _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }

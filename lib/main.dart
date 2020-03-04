@@ -5,8 +5,8 @@ import 'package:pomodoro_clock_flutter_mobx/home/home_page.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 void main() {
-  GetIt.I.registerSingleton<PomodoroCountDown>(PomodoroCountDown());
-  GetIt.I.registerSingleton<PomodoroTechnique>(PomodoroTechnique());
+  GetIt.I.registerLazySingleton(() => PomodoroTechnique());
+  GetIt.I.registerLazySingleton(() => PomodoroCountDown());
   runApp(MyApp());
 }
 

@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:countdown/countdown.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
-import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 part 'pomodoro_countdown.g.dart';
 
 class PomodoroCountDown = _PomodoroCountDown with _$PomodoroCountDown;
 
 abstract class _PomodoroCountDown with Store {
+  final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
   StreamSubscription _countDownSubscription;
 
   set duration(Duration duration) => _duration = duration;
@@ -61,7 +63,7 @@ abstract class _PomodoroCountDown with Store {
     }
 
     _duration ??= Duration(
-      minutes: Pomodoro.defaultConfig.sessionMinutes,
+      seconds: 5,
     );
 
     final _countDown = CountDown(_duration);
@@ -73,6 +75,7 @@ abstract class _PomodoroCountDown with Store {
         countDownSeconds = duration.inSeconds;
       }
     });
-    _countDownSubscription.onDone(() {});
+    _countDownSubscription
+        .onDone(() => _pomodoroTechnique.updatePomodoroStatus());
   }
 }

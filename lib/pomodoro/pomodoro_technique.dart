@@ -1,41 +1,36 @@
-import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 
 part 'pomodoro_technique.g.dart';
 
 class PomodoroTechnique = _PomodoroTechnique with _$PomodoroTechnique;
 
 abstract class _PomodoroTechnique with Store {
-  final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
-
   @observable
   Pomodoro pomodoro = Pomodoro.defaultConfig;
 
   @action
-  void start() {
-    _pomodoroCountDown.start();
-  }
-
-  @action
-  void pause() {
-    _pomodoroCountDown.pause();
-  }
-
-  @action
-  void resume() {
-    _pomodoroCountDown.resume();
-  }
-
-  @action
-  void reset() {
-    _pomodoroCountDown.reset();
-  }
-
-  Pomodoro _changePomodoroStatus(status) {
+  void updatePomodoroStatus() {
     var _newPomodoro = pomodoro;
-    _newPomodoro.status = status;
-    return _newPomodoro;
+    _newPomodoro.status = _whatStatusToChange();
+    pomodoro = _newPomodoro;
+  }
+
+  PomodoroStatus _whatStatusToChange() {
+    if (pomodoro.status == PomodoroStatus.session) {
+      return PomodoroStatus.short_break;
+    }
+
+    if (pomodoro.status == PomodoroStatus.short_break ||
+        pomodoro.status == PomodoroStatus.long_break) {
+      return PomodoroStatus.session;
+    }
+
+    if (pomodoro.sessionNumber == 4) {
+      return PomodoroStatus.long_break;
+    }
+
+    return PomodoroStatus.session;
   }
 }
