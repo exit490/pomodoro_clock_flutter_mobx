@@ -50,6 +50,16 @@ mixin _$PomodoroTechnique on _PomodoroTechnique, Store {
   }
 
   @override
+  void resume() {
+    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
+    try {
+      return super.resume();
+    } finally {
+      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void reset() {
     final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {

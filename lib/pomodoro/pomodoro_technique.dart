@@ -27,6 +27,12 @@ abstract class _PomodoroTechnique with Store {
   }
 
   @action
+  void resume() {
+    pomodoro = _changePomodoroStatus(PomodoroStatus.started);
+    _pomodoroCountDown.resume();
+  }
+
+  @action
   void reset() {
     pomodoro = _changePomodoroStatus(PomodoroStatus.initial);
     _pomodoroCountDown.reset();
