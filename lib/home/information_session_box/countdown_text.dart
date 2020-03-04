@@ -17,6 +17,21 @@ class CountDownText extends StatelessWidget {
   _countDownSeconds() {
     var _countDownSeconds = _pomodoroCountDown.countDownSeconds;
     _countDownSeconds ??= Pomodoro.defaultConfig.sessionMinutes * 60;
-    return _countDownSeconds;
+    return _format(_countDownSeconds);
+  }
+
+  _format(seconds) {
+    final double minutesDouble = seconds / 60;
+    final int minutesInt = minutesDouble.toInt();
+    var secondsMod = seconds % 60;
+    secondsMod = _addZeroWhenLessThan10(secondsMod);
+    return '$minutesInt:$secondsMod';
+  }
+
+  _addZeroWhenLessThan10(seconds) {
+    if (seconds < 10) {
+      return '0$seconds';
+    }
+    return '$seconds';
   }
 }
