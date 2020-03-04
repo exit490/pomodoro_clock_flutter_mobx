@@ -17,7 +17,7 @@ class Pomodoro {
     longBreakMinutes: 25,
     shortBreakMinutes: 5,
     sessionNumber: 1,
-    status: PomodoroStatus.initial,
+    status: PomodoroStatus.session,
   );
 
   Pomodoro({

@@ -27,6 +27,23 @@ mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
     }, _$countDownSecondsAtom, name: '${_$countDownSecondsAtom.name}_set');
   }
 
+  final _$statusAtom = Atom(name: '_PomodoroCountDown.status');
+
+  @override
+  CountdownStatus get status {
+    _$statusAtom.context.enforceReadPolicy(_$statusAtom);
+    _$statusAtom.reportObserved();
+    return super.status;
+  }
+
+  @override
+  set status(CountdownStatus value) {
+    _$statusAtom.context.conditionallyRunInAction(() {
+      super.status = value;
+      _$statusAtom.reportChanged();
+    }, _$statusAtom, name: '${_$statusAtom.name}_set');
+  }
+
   final _$_PomodoroCountDownActionController =
       ActionController(name: '_PomodoroCountDown');
 

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:countdown/countdown.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
 
 part 'pomodoro_countdown.g.dart';
@@ -19,23 +20,30 @@ abstract class _PomodoroCountDown with Store {
   @observable
   int countDownSeconds;
 
+  @observable
+  CountdownStatus status = CountdownStatus.initial;
+
   @action
   void start() {
+    status = CountdownStatus.started;
     _configureCountDownSubscription();
   }
 
   @action
   void pause() {
+    status = CountdownStatus.paused;
     _countDownSubscription?.pause();
   }
 
   @action
   void resume() {
+    status = CountdownStatus.started;
     _countDownSubscription?.resume();
   }
 
   @action
   void reset() {
+    status = CountdownStatus.initial;
     _killCountDownSubscription();
   }
 

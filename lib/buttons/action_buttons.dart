@@ -5,12 +5,12 @@ import 'package:pomodoro_clock_flutter_mobx/buttons/pause_button.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/reset_button.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/resume_button.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/start_button.dart';
-import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
-import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 
 class ActionsButtons extends StatelessWidget {
   static double size = 20;
-  final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
+  final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
 
   @override
   Widget build(BuildContext context) =>
@@ -21,9 +21,9 @@ class ActionsButtons extends StatelessWidget {
       ]);
 
   _startOrResumeButton() => Observer(builder: (_) {
-        final status = _pomodoroTechnique.pomodoro.status;
+        final status = _pomodoroCountDown.status;
 
-        if (status == PomodoroStatus.paused) {
+        if (status == CountdownStatus.paused) {
           return ResumeButton();
         }
 

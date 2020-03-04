@@ -2,7 +2,6 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
-import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 
 part 'pomodoro_technique.g.dart';
 
@@ -16,25 +15,21 @@ abstract class _PomodoroTechnique with Store {
 
   @action
   void start() {
-    pomodoro = _changePomodoroStatus(PomodoroStatus.started);
     _pomodoroCountDown.start();
   }
 
   @action
   void pause() {
-    pomodoro = _changePomodoroStatus(PomodoroStatus.paused);
     _pomodoroCountDown.pause();
   }
 
   @action
   void resume() {
-    pomodoro = _changePomodoroStatus(PomodoroStatus.started);
     _pomodoroCountDown.resume();
   }
 
   @action
   void reset() {
-    pomodoro = _changePomodoroStatus(PomodoroStatus.initial);
     _pomodoroCountDown.reset();
   }
 
