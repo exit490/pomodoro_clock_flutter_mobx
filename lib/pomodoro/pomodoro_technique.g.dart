@@ -8,104 +8,54 @@ part of 'pomodoro_technique.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$Pomodoro on _Pomodoro, Store {
-  final _$longBreakAtom = Atom(name: '_Pomodoro.longBreak');
+mixin _$PomodoroTechnique on _PomodoroTechnique, Store {
+  final _$pomodoroAtom = Atom(name: '_PomodoroTechnique.pomodoro');
 
   @override
-  int get longBreak {
-    _$longBreakAtom.context.enforceReadPolicy(_$longBreakAtom);
-    _$longBreakAtom.reportObserved();
-    return super.longBreak;
+  Pomodoro get pomodoro {
+    _$pomodoroAtom.context.enforceReadPolicy(_$pomodoroAtom);
+    _$pomodoroAtom.reportObserved();
+    return super.pomodoro;
   }
 
   @override
-  set longBreak(int value) {
-    _$longBreakAtom.context.conditionallyRunInAction(() {
-      super.longBreak = value;
-      _$longBreakAtom.reportChanged();
-    }, _$longBreakAtom, name: '${_$longBreakAtom.name}_set');
+  set pomodoro(Pomodoro value) {
+    _$pomodoroAtom.context.conditionallyRunInAction(() {
+      super.pomodoro = value;
+      _$pomodoroAtom.reportChanged();
+    }, _$pomodoroAtom, name: '${_$pomodoroAtom.name}_set');
   }
 
-  final _$sessionAtom = Atom(name: '_Pomodoro.session');
-
-  @override
-  int get session {
-    _$sessionAtom.context.enforceReadPolicy(_$sessionAtom);
-    _$sessionAtom.reportObserved();
-    return super.session;
-  }
-
-  @override
-  set session(int value) {
-    _$sessionAtom.context.conditionallyRunInAction(() {
-      super.session = value;
-      _$sessionAtom.reportChanged();
-    }, _$sessionAtom, name: '${_$sessionAtom.name}_set');
-  }
-
-  final _$shortBreakAtom = Atom(name: '_Pomodoro.shortBreak');
-
-  @override
-  int get shortBreak {
-    _$shortBreakAtom.context.enforceReadPolicy(_$shortBreakAtom);
-    _$shortBreakAtom.reportObserved();
-    return super.shortBreak;
-  }
-
-  @override
-  set shortBreak(int value) {
-    _$shortBreakAtom.context.conditionallyRunInAction(() {
-      super.shortBreak = value;
-      _$shortBreakAtom.reportChanged();
-    }, _$shortBreakAtom, name: '${_$shortBreakAtom.name}_set');
-  }
-
-  final _$statusAtom = Atom(name: '_Pomodoro.status');
-
-  @override
-  PomodoroStatus get status {
-    _$statusAtom.context.enforceReadPolicy(_$statusAtom);
-    _$statusAtom.reportObserved();
-    return super.status;
-  }
-
-  @override
-  set status(PomodoroStatus value) {
-    _$statusAtom.context.conditionallyRunInAction(() {
-      super.status = value;
-      _$statusAtom.reportChanged();
-    }, _$statusAtom, name: '${_$statusAtom.name}_set');
-  }
-
-  final _$_PomodoroActionController = ActionController(name: '_Pomodoro');
+  final _$_PomodoroTechniqueActionController =
+      ActionController(name: '_PomodoroTechnique');
 
   @override
   void start() {
-    final _$actionInfo = _$_PomodoroActionController.startAction();
+    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
       return super.start();
     } finally {
-      _$_PomodoroActionController.endAction(_$actionInfo);
+      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void pause() {
-    final _$actionInfo = _$_PomodoroActionController.startAction();
+    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
       return super.pause();
     } finally {
-      _$_PomodoroActionController.endAction(_$actionInfo);
+      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void reset() {
-    final _$actionInfo = _$_PomodoroActionController.startAction();
+    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
       return super.reset();
     } finally {
-      _$_PomodoroActionController.endAction(_$actionInfo);
+      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }
   }
 }

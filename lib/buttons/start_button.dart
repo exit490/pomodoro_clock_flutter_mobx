@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/action_buttons.dart';
-import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 class StartButton extends StatelessWidget {
-  final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
+  final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
 
   final playIcon = Icon(
     Icons.play_arrow,
@@ -14,7 +14,7 @@ class StartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FlatButton.icon(
-        onPressed: _pomodoroCountDown.start,
+        onPressed: _pomodoroTechnique.start,
         icon: playIcon,
         label: Text('START'),
       );

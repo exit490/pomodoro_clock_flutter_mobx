@@ -1,38 +1,32 @@
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 
 part 'pomodoro_technique.g.dart';
 
-class Pomodoro = _Pomodoro with _$Pomodoro;
+class PomodoroTechnique = _PomodoroTechnique with _$PomodoroTechnique;
 
-abstract class _Pomodoro with Store {
-  @observable
-  int longBreak = 30;
-
-  @observable
-  int session = 25;
+abstract class _PomodoroTechnique with Store {
+  final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
 
   @observable
-  int shortBreak = 5;
-
-  @observable
-  PomodoroStatus status = PomodoroStatus.initial;
+  Pomodoro pomodoro = Pomodoro.defaultConfig;
 
   @action
   void start() {
-    status = PomodoroStatus.started;
+    pomodoro.status = PomodoroStatus.started;
+    _pomodoroCountDown.start();
   }
 
   @action
   void pause() {
-    status = PomodoroStatus.paused;
+    pomodoro.status = PomodoroStatus.paused;
   }
 
   @action
   void reset() {
-    status = PomodoroStatus.initial;
-    longBreak = 30;
-    session = 25;
-    shortBreak = 5;
+    pomodoro = Pomodoro.defaultConfig;
   }
 }

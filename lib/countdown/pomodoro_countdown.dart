@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:countdown/countdown.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
 
 part 'pomodoro_countdown.g.dart';
-
-Duration get defaultDuration => _defaultDuration;
-Duration _defaultDuration = Duration(minutes: 25);
 
 class PomodoroCountDown = _PomodoroCountDown with _$PomodoroCountDown;
 
@@ -54,7 +52,10 @@ abstract class _PomodoroCountDown with Store {
       return;
     }
 
-    _duration ??= _defaultDuration;
+    _duration ??= Duration(
+      minutes: Pomodoro.defaultConfig.sessionMinutes,
+    );
+
     final _countDown = CountDown(_duration);
 
     _countDownSubscription = _countDown.stream.listen(null);
