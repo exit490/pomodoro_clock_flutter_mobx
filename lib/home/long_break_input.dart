@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/custom_text_field.dart';
 
 class LongBreakBox extends StatelessWidget {
   final double buttonSize = 20;
@@ -19,7 +20,7 @@ class LongBreakBox extends StatelessWidget {
     return Container(
       width: 50,
       height: 50,
-      child: TextField(),
+      child: NumericTextField(),
     );
   }
 
