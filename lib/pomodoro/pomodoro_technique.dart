@@ -8,7 +8,11 @@ class PomodoroTechnique = _PomodoroTechnique with _$PomodoroTechnique;
 
 abstract class _PomodoroTechnique with Store {
   @observable
-  Pomodoro pomodoro = Pomodoro.defaultConfig;
+  Pomodoro pomodoro = Pomodoro.defaultConfig();
+
+  bool get _isShortOrLongBreak =>
+      pomodoro.status == PomodoroStatus.short_break ||
+      pomodoro.status == PomodoroStatus.long_break;
 
   @action
   void updatePomodoroStatus() {
@@ -23,8 +27,7 @@ abstract class _PomodoroTechnique with Store {
       return;
     }
 
-    if (pomodoro.status == PomodoroStatus.short_break ||
-        pomodoro.status == PomodoroStatus.long_break) {
+    if (_isShortOrLongBreak) {
       _configureSession();
       return;
     }

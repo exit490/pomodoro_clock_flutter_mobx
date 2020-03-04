@@ -4,6 +4,7 @@ import 'package:countdown/countdown.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 part 'pomodoro_countdown.g.dart';
@@ -45,7 +46,7 @@ abstract class _PomodoroCountDown with Store {
 
   @action
   void reset() {
-    status = CountdownStatus.initial;
+    _pomodoroTechnique.pomodoro = Pomodoro.defaultConfig();
     _killCountDownSubscription();
   }
 
@@ -55,6 +56,7 @@ abstract class _PomodoroCountDown with Store {
     _countDownSubscription = null;
     _duration = null;
     countDownSeconds = null;
+    status = CountdownStatus.initial;
   }
 
   _configureCountDownSubscription() {

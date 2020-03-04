@@ -12,13 +12,13 @@ class Pomodoro {
 
   PomodoroStatus status;
 
-  static final defaultConfig = Pomodoro(
-    sessionMinutes: 25,
-    longBreakMinutes: 25,
-    shortBreakMinutes: 5,
-    sessionNumber: 1,
-    status: PomodoroStatus.session,
-  );
+  factory Pomodoro.defaultConfig() => Pomodoro(
+        sessionMinutes: 25,
+        longBreakMinutes: 25,
+        shortBreakMinutes: 5,
+        sessionNumber: 1,
+        status: PomodoroStatus.session,
+      );
 
   Pomodoro({
     @required this.sessionMinutes,
