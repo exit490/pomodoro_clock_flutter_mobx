@@ -29,7 +29,7 @@ abstract class _PomodoroTechnique with Store {
   @action
   void reset() {
     pomodoro = _changePomodoroStatus(PomodoroStatus.initial);
-    _pomodoroCountDown.pause();
+    _pomodoroCountDown.reset();
   }
 
   Pomodoro _changePomodoroStatus(status) {
