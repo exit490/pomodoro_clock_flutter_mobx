@@ -18,6 +18,10 @@ abstract class _PomodoroTechnique with Store {
   }
 
   PomodoroStatus _whatStatusToChange() {
+    if (pomodoro.sessionNumber == 4) {
+      return PomodoroStatus.long_break;
+    }
+
     if (pomodoro.status == PomodoroStatus.session) {
       return PomodoroStatus.short_break;
     }
@@ -25,10 +29,6 @@ abstract class _PomodoroTechnique with Store {
     if (pomodoro.status == PomodoroStatus.short_break ||
         pomodoro.status == PomodoroStatus.long_break) {
       return PomodoroStatus.session;
-    }
-
-    if (pomodoro.sessionNumber == 4) {
-      return PomodoroStatus.long_break;
     }
 
     return PomodoroStatus.session;
