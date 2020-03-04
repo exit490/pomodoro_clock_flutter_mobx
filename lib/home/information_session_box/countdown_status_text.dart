@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 
-class PomodoroStatusText extends StatelessWidget {
+class CountdownStatusText extends StatelessWidget {
   final _pomodoroCountDown = GetIt.I<PomodoroCountDown>();
 
   @override
