@@ -10,7 +10,7 @@ class LongBreakBox extends StatelessWidget {
       children: <Widget>[
         _plusButton(),
         Text('LONG BREAK'),
-        PomodoroConfigurationTextField(),
+        PomodoroConfigurationTextField.longBreak(),
         _subtractButton(),
       ],
     );

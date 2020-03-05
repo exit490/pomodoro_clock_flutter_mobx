@@ -10,7 +10,7 @@ class SessionBox extends StatelessWidget {
       children: <Widget>[
         _plusButton(),
         Text('SESSION'),
-        PomodoroConfigurationTextField(),
+        PomodoroConfigurationTextField.session(),
         _subtractButton(),
       ],
     );
