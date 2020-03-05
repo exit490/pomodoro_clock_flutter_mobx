@@ -20,7 +20,7 @@ class LongBreakBox extends StatelessWidget {
     return Container(
       width: 50,
       height: 50,
-      child: NumericTextField(),
+      child: PomodoroConfigurationTextField(),
     );
   }
 

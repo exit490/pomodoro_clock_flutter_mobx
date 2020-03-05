@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/custom_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/session_input/session_text_field.dart';
 
 class SessionBox extends StatelessWidget {
   final double buttonSize = 20;
@@ -10,17 +10,9 @@ class SessionBox extends StatelessWidget {
       children: <Widget>[
         _plusButton(),
         Text('SESSION'),
-        _sessionTextField(),
+        SessionTextField(),
         _subtractButton(),
       ],
-    );
-  }
-
-  _sessionTextField() {
-    return Container(
-      width: 50,
-      height: 50,
-      child: NumericTextField(),
     );
   }
 
