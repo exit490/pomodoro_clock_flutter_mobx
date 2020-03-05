@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/pomodoro_configuration_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/pomodoro_configuration_text_field.dart';
 
 class LongBreakBox extends StatelessWidget {
   final double buttonSize = 20;
