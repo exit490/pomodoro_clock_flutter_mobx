@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/custom_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/long_break_input/long_break_text_field.dart';
 
 class LongBreakBox extends StatelessWidget {
   final double buttonSize = 20;
@@ -10,17 +10,9 @@ class LongBreakBox extends StatelessWidget {
       children: <Widget>[
         _plusButton(),
         Text('LONG BREAK'),
-        _sessionTextField(),
+        LongBreakTextField(),
         _subtractButton(),
       ],
-    );
-  }
-
-  _sessionTextField() {
-    return Container(
-      width: 50,
-      height: 50,
-      child: PomodoroConfigurationTextField(),
     );
   }
 

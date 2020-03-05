@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/action_buttons.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/information_session_box/information_session_box.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/long_break_input.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/session_input/session_input.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/short_break_input.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/long_break_input/long_break_input.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/session_input/session_input.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/short_break_input.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_information_box/information_session_box.dart';
 
 class HomePage extends StatelessWidget {
   final pomodoroCountDown = GetIt.I<PomodoroCountDown>();

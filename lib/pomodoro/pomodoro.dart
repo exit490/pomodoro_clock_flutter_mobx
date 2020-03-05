@@ -14,7 +14,7 @@ class Pomodoro {
 
   factory Pomodoro.defaultConfig() => Pomodoro(
         sessionMinutes: 25,
-        longBreakMinutes: 25,
+        longBreakMinutes: 30,
         shortBreakMinutes: 5,
         sessionNumber: 1,
         status: PomodoroStatus.session,
