@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/session_input/session_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_box/pomodoro_configuration_text_field.dart';
 
-class SessionBox extends StatelessWidget {
+class LongBreakBox extends StatelessWidget {
   final double buttonSize = 20;
 
   @override
@@ -9,8 +9,8 @@ class SessionBox extends StatelessWidget {
     return Column(
       children: <Widget>[
         _plusButton(),
-        Text('SESSION'),
-        SessionTextField(),
+        Text('LONG BREAK'),
+        PomodoroConfigurationTextField(),
         _subtractButton(),
       ],
     );
