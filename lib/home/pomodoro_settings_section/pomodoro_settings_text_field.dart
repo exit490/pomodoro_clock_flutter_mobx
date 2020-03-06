@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_section.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 class PomodoroSettingsTextField extends StatelessWidget {
@@ -11,11 +12,11 @@ class PomodoroSettingsTextField extends StatelessWidget {
   final double _width = 50;
   final double _height = 50;
 
-  final int _type;
+  final PomodoroStatus _status;
 
   PomodoroSettingsTextField(
       {PomodoroSettingsSection pomodoroConfigurationTextField})
-      : _type = pomodoroConfigurationTextField.type;
+      : _status = pomodoroConfigurationTextField.status;
 
   @override
   Widget build(BuildContext context) => Observer(
@@ -43,15 +44,15 @@ class PomodoroSettingsTextField extends StatelessWidget {
   }
 
   _whatConfigurationMinutes() {
-    if (_type == PomodoroSettingsSection.sessionS) {
+    if (_status == PomodoroStatus.session) {
       return _pomodoroTechnique.pomodoro.sessionMinutes;
     }
 
-    if (_type == PomodoroSettingsSection.longBreakS) {
+    if (_status == PomodoroStatus.long_break) {
       return _pomodoroTechnique.pomodoro.longBreakMinutes;
     }
 
-    if (_type == PomodoroSettingsSection.shortBreakS) {
+    if (_status == PomodoroStatus.short_break) {
       return _pomodoroTechnique.pomodoro.shortBreakMinutes;
     }
 

@@ -9,19 +9,15 @@ class PomodoroSettingsSection extends StatelessWidget {
 
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
 
-  final int _type;
+  final PomodoroStatus _status;
 
-  static int sessionS = 0;
-  static int shortBreakS = 1;
-  static int longBreakS = 2;
+  PomodoroStatus get status => _status;
 
-  int get type => _type;
+  PomodoroSettingsSection.session() : _status = PomodoroStatus.session;
 
-  PomodoroSettingsSection.session() : _type = sessionS;
+  PomodoroSettingsSection.shortBreak() : _status = PomodoroStatus.short_break;
 
-  PomodoroSettingsSection.shortBreak() : _type = shortBreakS;
-
-  PomodoroSettingsSection.longBreak() : _type = longBreakS;
+  PomodoroSettingsSection.longBreak() : _status = PomodoroStatus.long_break;
 
   @override
   Widget build(BuildContext context) => _whatSection();
@@ -30,7 +26,7 @@ class PomodoroSettingsSection extends StatelessWidget {
     var _sectionText;
     var sumAction;
     var subtractAction;
-    if (_type == PomodoroSettingsSection.sessionS) {
+    if (_status == PomodoroStatus.session) {
       _sectionText = 'SESSION';
 
       sumAction = () => _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
@@ -38,7 +34,7 @@ class PomodoroSettingsSection extends StatelessWidget {
           () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
     }
 
-    if (_type == PomodoroSettingsSection.longBreakS) {
+    if (_status == PomodoroStatus.long_break) {
       _sectionText = 'LONG BREAK';
       sumAction =
           () => _pomodoroTechnique.sumMinutes(PomodoroStatus.long_break);
@@ -46,7 +42,7 @@ class PomodoroSettingsSection extends StatelessWidget {
           () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.long_break);
     }
 
-    if (_type == PomodoroSettingsSection.shortBreakS) {
+    if (_status == PomodoroStatus.short_break) {
       _sectionText = 'SHORT BREAK';
       sumAction =
           () => _pomodoroTechnique.sumMinutes(PomodoroStatus.short_break);
