@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/pomodoro_configuration_section.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_section.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
-class PomodoroConfigurationTextField extends StatelessWidget {
+class PomodoroSettingsTextField extends StatelessWidget {
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
 
   final double _width = 50;
@@ -13,8 +13,8 @@ class PomodoroConfigurationTextField extends StatelessWidget {
 
   final int _type;
 
-  PomodoroConfigurationTextField(
-      {PomodoroConfigurationSection pomodoroConfigurationTextField})
+  PomodoroSettingsTextField(
+      {PomodoroSettingsSection pomodoroConfigurationTextField})
       : _type = pomodoroConfigurationTextField.type;
 
   @override
@@ -43,15 +43,15 @@ class PomodoroConfigurationTextField extends StatelessWidget {
   }
 
   _whatConfigurationMinutes() {
-    if (_type == PomodoroConfigurationSection.sessionS) {
+    if (_type == PomodoroSettingsSection.sessionS) {
       return _pomodoroTechnique.pomodoro.sessionMinutes;
     }
 
-    if (_type == PomodoroConfigurationSection.longBreakS) {
+    if (_type == PomodoroSettingsSection.longBreakS) {
       return _pomodoroTechnique.pomodoro.longBreakMinutes;
     }
 
-    if (_type == PomodoroConfigurationSection.shortBreakS) {
+    if (_type == PomodoroSettingsSection.shortBreakS) {
       return _pomodoroTechnique.pomodoro.shortBreakMinutes;
     }
 

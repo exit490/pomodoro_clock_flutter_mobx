@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/pomodoro_configuration_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_text_field.dart';
 
-class PomodoroConfigurationSection extends StatelessWidget {
+class PomodoroSettingsSection extends StatelessWidget {
   final double buttonSize = 20;
 
   final int _type;
@@ -12,11 +12,11 @@ class PomodoroConfigurationSection extends StatelessWidget {
 
   int get type => _type;
 
-  PomodoroConfigurationSection.session() : _type = sessionS;
+  PomodoroSettingsSection.session() : _type = sessionS;
 
-  PomodoroConfigurationSection.shortBreak() : _type = shortBreakS;
+  PomodoroSettingsSection.shortBreak() : _type = shortBreakS;
 
-  PomodoroConfigurationSection.longBreak() : _type = longBreakS;
+  PomodoroSettingsSection.longBreak() : _type = longBreakS;
 
   @override
   Widget build(BuildContext context) {
@@ -49,22 +49,22 @@ class PomodoroConfigurationSection extends StatelessWidget {
 
   _whatSection() {
     var _sectionText;
-    if (_type == PomodoroConfigurationSection.sessionS) {
+    if (_type == PomodoroSettingsSection.sessionS) {
       _sectionText = 'SESSION';
     }
 
-    if (_type == PomodoroConfigurationSection.longBreakS) {
+    if (_type == PomodoroSettingsSection.longBreakS) {
       _sectionText = 'LONG BREAK';
     }
 
-    if (_type == PomodoroConfigurationSection.shortBreakS) {
+    if (_type == PomodoroSettingsSection.shortBreakS) {
       _sectionText = 'SHORT BREAK';
     }
 
     return <Widget>[
       _plusButton(),
       Text(_sectionText),
-      PomodoroConfigurationTextField(
+      PomodoroSettingsTextField(
         pomodoroConfigurationTextField: this,
       ),
       _subtractButton(),
