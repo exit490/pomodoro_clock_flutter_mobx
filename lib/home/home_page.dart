@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/buttons/action_buttons.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/long_break_input.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/session_input.dart';
-import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/short_break_input.dart';
+import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_configuration_section/pomodoro_configuration_section.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_information_box/information_session_box.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,10 +28,10 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            LongBreakBox(),
+            PomodoroConfigurationSection.longBreak(),
             Padding(padding: EdgeInsets.only(right: 20)),
-            SessionBox(),
+            PomodoroConfigurationSection.session(),
             Padding(padding: EdgeInsets.only(right: 20)),
-            BreakBox(),
+            PomodoroConfigurationSection.shortBreak(),
           ]);
 }
