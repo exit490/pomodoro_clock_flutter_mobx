@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 part 'pomodoro_countdown.g.dart';
@@ -64,11 +65,9 @@ abstract class _PomodoroCountDown with Store {
       return;
     }
 
-    _duration ??= Duration(
-      seconds: 5,
+    final _countDown = CountDown(
+      _getMinutesFromPomodoroStatus(),
     );
-
-    final _countDown = CountDown(_duration);
 
     _countDownSubscription = _countDown.stream.listen(null);
     _countDownSubscription.onData((_duration) {
@@ -81,5 +80,31 @@ abstract class _PomodoroCountDown with Store {
       _killCountDownSubscription();
       _pomodoroTechnique.updatePomodoroStatus();
     });
+  }
+
+  _getMinutesFromPomodoroStatus() {
+    final _status = _pomodoroTechnique.pomodoro.status;
+
+    if (_status == PomodoroStatus.session) {
+      return Duration(
+        minutes: _pomodoroTechnique.pomodoro.sessionMinutes,
+      );
+    }
+
+    if (_status == PomodoroStatus.short_break) {
+      return Duration(
+        minutes: _pomodoroTechnique.pomodoro.shortBreakMinutes,
+      );
+    }
+
+    if (_status == PomodoroStatus.long_break) {
+      return Duration(
+        minutes: _pomodoroTechnique.pomodoro.longBreakMinutes,
+      );
+    }
+
+    return Duration(
+      minutes: _pomodoroTechnique.pomodoro.sessionMinutes,
+    );
   }
 }
