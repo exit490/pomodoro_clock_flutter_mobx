@@ -27,4 +27,25 @@ class Pomodoro {
     @required this.sessionNumber,
     @required this.status,
   });
+
+  addSessionMinute(value) {
+    sessionMinutes = sessionMinutes + value;
+    if (sessionMinutes < 1) {
+      sessionMinutes = 1;
+    }
+  }
+
+  addShortBreakMinute(value) {
+    shortBreakMinutes = shortBreakMinutes + value;
+    if (shortBreakMinutes < 1) {
+      shortBreakMinutes = 1;
+    }
+  }
+
+  addLongBreakMinute(value) {
+    longBreakMinutes = longBreakMinutes + value;
+    if (longBreakMinutes < 1) {
+      longBreakMinutes = 1;
+    }
+  }
 }

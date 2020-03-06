@@ -16,9 +16,6 @@ abstract class _PomodoroCountDown with Store {
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
   StreamSubscription _countDownSubscription;
 
-  set duration(Duration duration) => _duration = duration;
-  Duration _duration;
-
   _isRunning() => _countDownSubscription != null;
 
   @observable
@@ -55,7 +52,6 @@ abstract class _PomodoroCountDown with Store {
     _countDownSubscription?.pause();
     _countDownSubscription?.cancel();
     _countDownSubscription = null;
-    _duration = null;
     countDownSeconds = null;
     status = CountdownStatus.initial;
   }

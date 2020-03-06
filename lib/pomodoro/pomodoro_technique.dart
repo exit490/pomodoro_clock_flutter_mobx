@@ -28,14 +28,14 @@ abstract class _PomodoroTechnique with Store {
 
   _addMinutes(status, value) {
     if (status == PomodoroStatus.session) {
-      pomodoro.sessionMinutes = pomodoro.sessionMinutes + value;
+      pomodoro.addSessionMinute(value);
     }
     if (status == PomodoroStatus.long_break) {
-      pomodoro.longBreakMinutes = pomodoro.longBreakMinutes + value;
+      pomodoro.addLongBreakMinute(value);
     }
 
     if (status == PomodoroStatus.short_break) {
-      pomodoro.shortBreakMinutes = pomodoro.shortBreakMinutes + value;
+      pomodoro.addShortBreakMinute(value);
     }
     _notify();
   }
