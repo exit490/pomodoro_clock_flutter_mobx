@@ -15,20 +15,28 @@ abstract class _PomodoroTechnique with Store {
       pomodoro.status == PomodoroStatus.long_break;
 
   @action
-  void plusSessionMinutes() {
-    pomodoro.sessionMinutes++;
+  void sumMinutes(status) {
+    _addMinutes(status, 1);
     _notify();
   }
 
   @action
-  void plusLongBreakMinutes() {
-    pomodoro.longBreakMinutes++;
+  void subtractMinutes(status) {
+    _addMinutes(status, -1);
     _notify();
   }
 
-  @action
-  void plusShortBreakMinutes() {
-    pomodoro.shortBreakMinutes++;
+  _addMinutes(status, value) {
+    if (status == PomodoroStatus.session) {
+      pomodoro.sessionMinutes = pomodoro.sessionMinutes + value;
+    }
+    if (status == PomodoroStatus.long_break) {
+      pomodoro.longBreakMinutes = pomodoro.longBreakMinutes + value;
+    }
+
+    if (status == PomodoroStatus.short_break) {
+      pomodoro.shortBreakMinutes = pomodoro.shortBreakMinutes + value;
+    }
     _notify();
   }
 

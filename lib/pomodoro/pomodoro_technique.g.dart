@@ -30,30 +30,20 @@ mixin _$PomodoroTechnique on _PomodoroTechnique, Store {
       ActionController(name: '_PomodoroTechnique');
 
   @override
-  void plusSessionMinutes() {
+  void sumMinutes(dynamic status) {
     final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
-      return super.plusSessionMinutes();
+      return super.sumMinutes(status);
     } finally {
       _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void plusLongBreakMinutes() {
+  void subtractMinutes(dynamic status) {
     final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
     try {
-      return super.plusLongBreakMinutes();
-    } finally {
-      _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void plusShortBreakMinutes() {
-    final _$actionInfo = _$_PomodoroTechniqueActionController.startAction();
-    try {
-      return super.plusShortBreakMinutes();
+      return super.subtractMinutes(status);
     } finally {
       _$_PomodoroTechniqueActionController.endAction(_$actionInfo);
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_text_field.dart';
+import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
 
 class PomodoroSettingsSection extends StatelessWidget {
@@ -25,53 +26,48 @@ class PomodoroSettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _whatSection();
 
-  _subtractButton() {
-    var downIcon = Icon(
-      Icons.arrow_drop_down,
-      size: _buttonSize,
-    );
-
-    return IconButton(
-      onPressed: () {},
-      icon: downIcon,
-    );
-  }
-
   _whatSection() {
     var _sectionText;
-    var plusButtonAction;
+    var sumAction;
+    var subtractAction;
     if (_type == PomodoroSettingsSection.sessionS) {
       _sectionText = 'SESSION';
-      plusButtonAction = () => _pomodoroTechnique.plusSessionMinutes();
+
+      sumAction = () => _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
+      subtractAction =
+          () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
     }
 
     if (_type == PomodoroSettingsSection.longBreakS) {
       _sectionText = 'LONG BREAK';
-      plusButtonAction = () => _pomodoroTechnique.plusLongBreakMinutes();
+      sumAction =
+          () => _pomodoroTechnique.sumMinutes(PomodoroStatus.long_break);
+      subtractAction =
+          () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.long_break);
     }
 
     if (_type == PomodoroSettingsSection.shortBreakS) {
       _sectionText = 'SHORT BREAK';
-      plusButtonAction = () => _pomodoroTechnique.plusShortBreakMinutes();
+      sumAction =
+          () => _pomodoroTechnique.sumMinutes(PomodoroStatus.short_break);
+      subtractAction =
+          () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.short_break);
     }
 
     return Column(children: <Widget>[
-      _plusButton(plusButtonAction),
+      IconButton(onPressed: sumAction, icon: upIcon),
       Text(_sectionText),
       PomodoroSettingsTextField(
         pomodoroConfigurationTextField: this,
       ),
-      _subtractButton(),
+      IconButton(onPressed: subtractAction, icon: downIcon),
     ]);
   }
 
-  _plusButton(action) {
-    return IconButton(
-      onPressed: action,
-      icon: upIcon,
-    );
-  }
-
+  final downIcon = Icon(
+    Icons.arrow_drop_down,
+    size: _buttonSize,
+  );
   final upIcon = Icon(
     Icons.arrow_drop_up,
     size: _buttonSize,
