@@ -30,32 +30,26 @@ class PomodoroSettingsSection extends StatelessWidget {
     var subtractAction;
     if (_status == PomodoroStatus.session) {
       _sectionText = 'SESSION';
+
       sumAction = () {
         _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
-        _pomodoroCountdown.updateCountDown(
-            _pomodoroTechnique.pomodoro.sessionMinutes, status);
+        _pomodoroCountdown
+            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
       };
 
       subtractAction = () {
         _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
-        _pomodoroCountdown.updateCountDown(
-            _pomodoroTechnique.pomodoro.sessionMinutes, status);
+        _pomodoroCountdown
+            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
       };
     }
 
     if (_status == PomodoroStatus.long_break) {
       _sectionText = 'LONG BREAK';
-      sumAction = () {
-        _pomodoroTechnique.sumMinutes(PomodoroStatus.long_break);
-        _pomodoroCountdown.updateCountDown(
-            _pomodoroTechnique.pomodoro.longBreakMinutes, status);
-      };
-
-      subtractAction = () {
-        _pomodoroTechnique.subtractMinutes(PomodoroStatus.long_break);
-        _pomodoroCountdown.updateCountDown(
-            _pomodoroTechnique.pomodoro.longBreakMinutes, status);
-      };
+      sumAction =
+          () => _pomodoroTechnique.sumMinutes(PomodoroStatus.long_break);
+      subtractAction =
+          () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.long_break);
     }
 
     if (_status == PomodoroStatus.short_break) {
