@@ -88,10 +88,10 @@ mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
   }
 
   @override
-  void updateCountDown(dynamic minutes) {
+  void updateCountDown(dynamic minutes, dynamic status) {
     final _$actionInfo = _$_PomodoroCountDownActionController.startAction();
     try {
-      return super.updateCountDown(minutes);
+      return super.updateCountDown(minutes, status);
     } finally {
       _$_PomodoroCountDownActionController.endAction(_$actionInfo);
     }

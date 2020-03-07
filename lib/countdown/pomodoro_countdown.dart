@@ -49,8 +49,10 @@ abstract class _PomodoroCountDown with Store {
   }
 
   @action
-  void updateCountDown(minutes) {
-    countDownSeconds = minutes * 60;
+  void updateCountDown(minutes, status) {
+    if (_pomodoroTechnique.pomodoro.status == status) {
+      countDownSeconds = minutes * 60;
+    }
   }
 
   _killCountDownSubscription() {
