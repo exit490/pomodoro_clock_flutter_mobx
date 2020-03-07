@@ -28,6 +28,10 @@ abstract class _PomodoroCountDown with Store {
 
   _PomodoroCountDown() {
     status = CountdownStatus.initial;
+    _defaultCountdown();
+  }
+
+  _defaultCountdown() {
     final initialSeconds = _getMinutesFromPomodoroStatus().inSeconds;
     countDownSeconds = initialSeconds;
   }
@@ -65,7 +69,7 @@ abstract class _PomodoroCountDown with Store {
     _countDownSubscription?.pause();
     _countDownSubscription?.cancel();
     _countDownSubscription = null;
-    countDownSeconds = null;
+    _defaultCountdown();
     status = CountdownStatus.initial;
   }
 
