@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/countdown_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_text_field.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
@@ -22,7 +24,8 @@ class PomodoroSettingsSection extends StatelessWidget {
   PomodoroSettingsSection.longBreak() : _status = PomodoroStatus.long_break;
 
   @override
-  Widget build(BuildContext context) => _whatSection();
+  Widget build(BuildContext context) =>
+      Observer(builder: (_) => _showsSection());
 
   _whatSection() {
     var _sectionText;
@@ -78,4 +81,12 @@ class PomodoroSettingsSection extends StatelessWidget {
     Icons.arrow_drop_up,
     size: _buttonSize,
   );
+
+  _showsSection() {
+    if (_pomodoroCountdown.status == CountdownStatus.initial) {
+      return _whatSection();
+    }
+
+    return Container();
+  }
 }
