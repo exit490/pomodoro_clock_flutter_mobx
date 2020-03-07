@@ -13,6 +13,8 @@ part 'pomodoro_countdown.g.dart';
 class PomodoroCountDown = _PomodoroCountDown with _$PomodoroCountDown;
 
 abstract class _PomodoroCountDown with Store {
+  final _setupInSeconds = true;
+
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
   StreamSubscription _countDownSubscription;
 
@@ -22,7 +24,13 @@ abstract class _PomodoroCountDown with Store {
   int countDownSeconds;
 
   @observable
-  CountdownStatus status = CountdownStatus.initial;
+  CountdownStatus status;
+
+  _PomodoroCountDown() {
+    status = CountdownStatus.initial;
+    final initialSeconds = _getMinutesFromPomodoroStatus().inSeconds;
+    countDownSeconds = initialSeconds;
+  }
 
   @action
   void start() {
@@ -83,29 +91,36 @@ abstract class _PomodoroCountDown with Store {
     });
   }
 
-  _getMinutesFromPomodoroStatus() {
+  Duration _getMinutesFromPomodoroStatus() {
     final _status = _pomodoroTechnique.pomodoro.status;
 
     if (_status == PomodoroStatus.session) {
-      return Duration(
-        minutes: _pomodoroTechnique.pomodoro.sessionMinutes,
+      return _durationInSecondsOrMinutes(
+        _pomodoroTechnique.pomodoro.sessionMinutes,
       );
     }
 
     if (_status == PomodoroStatus.short_break) {
-      return Duration(
-        minutes: _pomodoroTechnique.pomodoro.shortBreakMinutes,
+      return _durationInSecondsOrMinutes(
+        _pomodoroTechnique.pomodoro.shortBreakMinutes,
       );
     }
 
     if (_status == PomodoroStatus.long_break) {
-      return Duration(
-        minutes: _pomodoroTechnique.pomodoro.longBreakMinutes,
+      return _durationInSecondsOrMinutes(
+        _pomodoroTechnique.pomodoro.longBreakMinutes,
       );
     }
 
-    return Duration(
-      minutes: _pomodoroTechnique.pomodoro.sessionMinutes,
+    return _durationInSecondsOrMinutes(
+      _pomodoroTechnique.pomodoro.sessionMinutes,
     );
+  }
+
+  _durationInSecondsOrMinutes(value) {
+    if (_setupInSeconds) {
+      return Duration(seconds: value);
+    }
+    return Duration(minutes: value);
   }
 }
