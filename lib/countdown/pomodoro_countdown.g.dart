@@ -86,4 +86,14 @@ mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
       _$_PomodoroCountDownActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  void updateCountDown(dynamic minutes) {
+    final _$actionInfo = _$_PomodoroCountDownActionController.startAction();
+    try {
+      return super.updateCountDown(minutes);
+    } finally {
+      _$_PomodoroCountDownActionController.endAction(_$actionInfo);
+    }
+  }
 }

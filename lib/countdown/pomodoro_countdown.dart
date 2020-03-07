@@ -48,6 +48,11 @@ abstract class _PomodoroCountDown with Store {
     _killCountDownSubscription();
   }
 
+  @action
+  void updateCountDown(minutes) {
+    countDownSeconds = minutes * 60;
+  }
+
   _killCountDownSubscription() {
     _countDownSubscription?.pause();
     _countDownSubscription?.cancel();

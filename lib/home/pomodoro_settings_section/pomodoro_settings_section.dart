@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pomodoro_clock_flutter_mobx/countdown/pomodoro_countdown.dart';
 import 'package:pomodoro_clock_flutter_mobx/home/pomodoro_settings_section/pomodoro_settings_text_field.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_status.dart';
 import 'package:pomodoro_clock_flutter_mobx/pomodoro/pomodoro_technique.dart';
@@ -8,6 +9,7 @@ class PomodoroSettingsSection extends StatelessWidget {
   static final double _buttonSize = 20;
 
   final _pomodoroTechnique = GetIt.I<PomodoroTechnique>();
+  final _pomodoroCountdown = GetIt.I<PomodoroCountDown>();
 
   final PomodoroStatus _status;
 
@@ -28,10 +30,17 @@ class PomodoroSettingsSection extends StatelessWidget {
     var subtractAction;
     if (_status == PomodoroStatus.session) {
       _sectionText = 'SESSION';
+      sumAction = () {
+        _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
+        _pomodoroCountdown
+            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
+      };
 
-      sumAction = () => _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
-      subtractAction =
-          () => _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
+      subtractAction = () {
+        _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
+        _pomodoroCountdown
+            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
+      };
     }
 
     if (_status == PomodoroStatus.long_break) {
