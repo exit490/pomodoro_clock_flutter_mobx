@@ -28,10 +28,10 @@ abstract class _PomodoroCountDown with Store {
 
   _PomodoroCountDown() {
     status = CountdownStatus.initial;
-    _defaultCountdown();
+    _setupCountdownDuration();
   }
 
-  _defaultCountdown() {
+  _setupCountdownDuration() {
     countDownDuration = _getMinutesFromPomodoroStatus();
   }
 
@@ -68,7 +68,7 @@ abstract class _PomodoroCountDown with Store {
     _countDownSubscription?.pause();
     _countDownSubscription?.cancel();
     _countDownSubscription = null;
-    _defaultCountdown();
+    _setupCountdownDuration();
     status = CountdownStatus.initial;
   }
 
@@ -88,8 +88,8 @@ abstract class _PomodoroCountDown with Store {
       }
     });
     _countDownSubscription.onDone(() {
-      _killCountDownSubscription();
       _pomodoroTechnique.updatePomodoroStatus();
+      _killCountDownSubscription();
     });
   }
 
