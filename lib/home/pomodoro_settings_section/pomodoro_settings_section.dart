@@ -36,14 +36,12 @@ class PomodoroSettingsSection extends StatelessWidget {
 
       sumAction = () {
         _pomodoroTechnique.sumMinutes(PomodoroStatus.session);
-        _pomodoroCountdown
-            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
+        _pomodoroCountdown.updateCountDown();
       };
 
       subtractAction = () {
         _pomodoroTechnique.subtractMinutes(PomodoroStatus.session);
-        _pomodoroCountdown
-            .updateCountDown(_pomodoroTechnique.pomodoro.sessionMinutes);
+        _pomodoroCountdown.updateCountDown();
       };
     }
 

@@ -9,22 +9,22 @@ part of 'pomodoro_countdown.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
-  final _$countDownSecondsAtom =
-      Atom(name: '_PomodoroCountDown.countDownSeconds');
+  final _$countDownDurationAtom =
+      Atom(name: '_PomodoroCountDown.countDownDuration');
 
   @override
-  int get countDownSeconds {
-    _$countDownSecondsAtom.context.enforceReadPolicy(_$countDownSecondsAtom);
-    _$countDownSecondsAtom.reportObserved();
-    return super.countDownSeconds;
+  Duration get countDownDuration {
+    _$countDownDurationAtom.context.enforceReadPolicy(_$countDownDurationAtom);
+    _$countDownDurationAtom.reportObserved();
+    return super.countDownDuration;
   }
 
   @override
-  set countDownSeconds(int value) {
-    _$countDownSecondsAtom.context.conditionallyRunInAction(() {
-      super.countDownSeconds = value;
-      _$countDownSecondsAtom.reportChanged();
-    }, _$countDownSecondsAtom, name: '${_$countDownSecondsAtom.name}_set');
+  set countDownDuration(Duration value) {
+    _$countDownDurationAtom.context.conditionallyRunInAction(() {
+      super.countDownDuration = value;
+      _$countDownDurationAtom.reportChanged();
+    }, _$countDownDurationAtom, name: '${_$countDownDurationAtom.name}_set');
   }
 
   final _$statusAtom = Atom(name: '_PomodoroCountDown.status');
@@ -88,10 +88,10 @@ mixin _$PomodoroCountDown on _PomodoroCountDown, Store {
   }
 
   @override
-  void updateCountDown(dynamic minutes) {
+  void updateCountDown() {
     final _$actionInfo = _$_PomodoroCountDownActionController.startAction();
     try {
-      return super.updateCountDown(minutes);
+      return super.updateCountDown();
     } finally {
       _$_PomodoroCountDownActionController.endAction(_$actionInfo);
     }

@@ -14,7 +14,7 @@ class CountDownText extends StatelessWidget {
       Text('${_countDownSeconds()}', style: TextStyle(fontSize: 90));
 
   _countDownSeconds() {
-    return _format(_pomodoroCountDown.countDownSeconds);
+    return _format(_pomodoroCountDown.countDownDuration.inSeconds);
   }
 
   _format(seconds) {

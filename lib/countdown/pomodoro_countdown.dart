@@ -21,7 +21,7 @@ abstract class _PomodoroCountDown with Store {
   _isRunning() => _countDownSubscription != null;
 
   @observable
-  int countDownSeconds;
+  Duration countDownDuration;
 
   @observable
   CountdownStatus status;
@@ -32,8 +32,7 @@ abstract class _PomodoroCountDown with Store {
   }
 
   _defaultCountdown() {
-    final initialSeconds = _getMinutesFromPomodoroStatus().inSeconds;
-    countDownSeconds = initialSeconds;
+    countDownDuration = _getMinutesFromPomodoroStatus();
   }
 
   @action
@@ -61,8 +60,8 @@ abstract class _PomodoroCountDown with Store {
   }
 
   @action
-  void updateCountDown(minutes) {
-    countDownSeconds = minutes * 60;
+  void updateCountDown() {
+    countDownDuration = _getMinutesFromPomodoroStatus();
   }
 
   _killCountDownSubscription() {
@@ -84,9 +83,8 @@ abstract class _PomodoroCountDown with Store {
 
     _countDownSubscription = _countDown.stream.listen(null);
     _countDownSubscription.onData((_duration) {
-      Duration duration = _duration;
-      if (duration.inSeconds != countDownSeconds) {
-        countDownSeconds = duration.inSeconds;
+      if (_duration.inSeconds != countDownDuration.inSeconds) {
+        countDownDuration = _duration;
       }
     });
     _countDownSubscription.onDone(() {
